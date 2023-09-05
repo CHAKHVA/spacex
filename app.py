@@ -20,9 +20,9 @@ def fetch_spacex_data():
 
 
 def categorize_launches(launches):
-    successful = list(filter(lambda x: x["success"] and not x["upcoming"], launches))
-    failed = list(filter(lambda x: not x["success"] and not x["upcoming"], launches))
-    upcoming = list(filter(lambda x: x["upcoming"]), launches)
+    successful = list(filter(lambda x: x["success"] and not x["upcoming", launches]))
+    failed = list(filter(lambda x: not x["success"] and not x["upcoming", launches]))
+    upcoming = list(filter(lambda x: x["upcoming"], launches))
     return {"successful": successful, "failed": failed, "upcoming": upcoming}
 
 
