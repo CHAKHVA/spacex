@@ -1,0 +1,9 @@
+{% macro render_launch(launch) %}
+<div class="launch_card">
+    <h3>{{ launch.name }}</h3>
+    <small>{{ launch.date_utc }}</small>
+    {% if launch.details%}
+    <p>{{ launch.details }}</p>
+    {% endif %}
+</div>
+{% endmacro %}

@@ -1,10 +1,9 @@
 import os
 from dotenv import load_dotenv
-import pprint
 
 load_dotenv()
 
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template
 import requests
 
 app = Flask(__name__)
@@ -20,18 +19,18 @@ def fetch_launches():
 
 
 def categorize_launches(launches):
-    upcoming = filter(lambda x: x["upcoming"] == True, launches)
-    successful = filter(lambda x: x["success"] == True, launches)
-    failed = filter(lambda x: x["success"] == False, launches)
+    successful = list(filter(lambda x: x["success"] == True, launches))
+    failed = list(filter(lambda x: x["success"] == False, launches))
+    upcoming = list(filter(lambda x: x["upcoming"] == True, launches))
 
-    return upcoming, successful, failed
+    return {"successful": successful, "failed": failed, "upcoming": upcoming}
+
+
+launches = categorize_launches(fetch_launches())
 
 
 @app.route("/")
 def index():
-    launches = categorize_launches(fetch_launches())
-    pprint.pprint(launches)
-
     return render_template("index.html", launches=launches)
 
 
