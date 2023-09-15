@@ -1,5 +1,6 @@
 import os
 from dotenv import load_dotenv
+from datetime import datetime
 
 load_dotenv()
 
@@ -29,9 +30,14 @@ def categorize_launches(launches):
 launches = categorize_launches(fetch_launches())
 
 
+@app.template_filter("date_only")
+def date_only_filter(dt):
+    return datetime.strptime(dt, "%Y-%m-%dT%H:%M:%S.%fZ").date()
+
+
 @app.route("/")
 def index():
-    return render_template("index.html", launches=launches)
+    return render_template("index.html", launches=launches, enumerate=enumerate)
 
 
 if __name__ == "__main__":

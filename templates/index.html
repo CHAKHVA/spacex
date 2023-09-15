@@ -16,19 +16,31 @@
 </div>
 
 <div class="timeline">
-    <div class="container" id="successful">
-        {% for launch in launches.successful %}
-        {{ render_launch(launch) }}
+    <div id="successful">
+        {% for id, launch in enumerate(launches.successful) %}
+        {% if id % 2 == 0 %}
+        {{ render_launch(launch, "left-side") }}
+        {% else %}
+        {{ render_launch(launch, "right-side") }}
+        {% endif %}
         {% endfor %}
     </div>
-    <div class="container" id="failed">
-        {% for launch in launches.failed %}
-        {{ render_launch(launch) }}
+    <div id="failed">
+        {% for id, launch in enumerate(launches.failed) %}
+        {% if id % 2 == 0 %}
+        {{ render_launch(launch, "left-side") }}
+        {% else %}
+        {{ render_launch(launch, "right-side") }}
+        {% endif %}
         {% endfor %}
     </div>
-    <div class="container" id="upcoming">
-        {% for launch in launches.upcoming %}
-        {{ render_launch(launch) }}
+    <div id="upcoming">
+        {% for id, launch in enumerate(launches.upcoming) %}
+        {% if id % 2 == 0 %}
+        {{ render_launch(launch, "left-side") }}
+        {% else %}
+        {{ render_launch(launch, "right-side") }}
+        {% endif %}
         {% endfor %}
     </div>
 </div>

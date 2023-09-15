@@ -1,9 +1,20 @@
-{% macro render_launch(launch) %}
-<div class="launch_card">
-    <h3>{{ launch.name }}</h3>
-    <small>{{ launch.date_utc }}</small>
-    {% if launch.details%}
-    <p>{{ launch.details }}</p>
+{% macro render_launch(launch, side) %}
+<div class="container {{ side }}">
+    {% if launch.links.patch.small %}
+    <img src="{{ launch.links.patch.small }}" alt="Launch" />
+    {% else %}
+    <img
+        src="{{ url_for('static', filename = 'assets/images/logo.jpg') }}"
+        alt="Launch"
+    />
     {% endif %}
+    <div class="launch_card">
+        <h3>{{ launch.name }}</h3>
+        <small>{{ launch.date_utc | date_only }}</small>
+        {% if launch.details%}
+        <p>{{ launch.details }}</p>
+        {% endif %}
+        <span></span>
+    </div>
 </div>
 {% endmacro %}
