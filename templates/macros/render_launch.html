@@ -14,6 +14,16 @@
         {% if launch.details%}
         <p>{{ launch.details }}</p>
         {% endif %}
+        <br />
+        <div class="links">
+            {% if launch.links.article %}
+            <a href="{{ launch.links.article }}" target="_blank">Article</a>
+            {% endif %} {% if launch.links.webcast %}
+            <a href="{{ launch.links.webcast }}" target="_blank">Youtube</a>
+            {% endif %} {% if launch.links.wikipedia %}
+            <a href="{{ launch.links.wikipedia }}" target="_blank">Wikipedia</a>
+            {% endif %}
+        </div>
         <span></span>
     </div>
 </div>
