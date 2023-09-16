@@ -178,6 +178,12 @@ body {
 }
 
 a {
+    cursor: pointer;
     text-decoration: none;
-    color: black;
+    color: rgb(98, 0, 255);
+}
+
+.links {
+    display: flex;
+    gap: 30px;
 }
