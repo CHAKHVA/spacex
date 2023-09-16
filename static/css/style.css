@@ -30,6 +30,7 @@ body {
     width: 100%;
     background: var(--primary);
     color: white;
+    z-index: 10;
 }
 
 .header__title {
@@ -66,10 +67,10 @@ body {
 }
 
 .timeline {
-    z-index: -1;
     position: relative;
     max-width: 1200px;
     margin: 50px auto;
+    z-index: 9;
 }
 
 .container {
