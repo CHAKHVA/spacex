@@ -2,10 +2,10 @@ import os
 from dotenv import load_dotenv
 from datetime import datetime
 
-load_dotenv()
-
 from flask import Flask, render_template
 import requests
+
+load_dotenv()
 
 app = Flask(__name__)
 app.config.update(SECRET_KEY=os.getenv("SECRET_KEY"))
@@ -20,9 +20,9 @@ def fetch_launches():
 
 
 def categorize_launches(launches):
-    successful = list(filter(lambda x: x["success"] == True, launches))
-    failed = list(filter(lambda x: x["success"] == False, launches))
-    upcoming = list(filter(lambda x: x["upcoming"] == True, launches))
+    successful = list(filter(lambda x: x["success"], launches))
+    failed = list(filter(lambda x: not x["success"], launches))
+    upcoming = list(filter(lambda x: x["upcoming"], launches))
 
     return {"successful": successful, "failed": failed, "upcoming": upcoming}
 
